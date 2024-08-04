@@ -4,7 +4,7 @@ import { createUser } from "../controllers/user.controller.js";
 
 const router = new Router()
 
-router.post('/', createUser)
+router.post('/register', createUser)
 
 
 export default router
