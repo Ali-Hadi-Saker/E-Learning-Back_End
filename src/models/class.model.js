@@ -14,9 +14,7 @@ const classSchema = new Schema({
         type: String,
         required: true,
     },
-    students:{
-
-    }
+    students: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }]
 })
 
 export const Class = mongoose.model("Class", classSchema)

@@ -2,7 +2,7 @@ import mongoose, {Schema} from "mongoose";
 
 
 const withdrawalSchema = new Schema({
-    students: {
+    student: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
         required: true
