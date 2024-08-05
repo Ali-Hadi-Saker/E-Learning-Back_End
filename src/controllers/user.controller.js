@@ -1,5 +1,6 @@
 import { User } from "../models/user.model.js";
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcrypt'; 
+import jwt from "jsonwebtoken"
 
 export const createUser = async (req, res) => {
     try {
@@ -32,13 +33,20 @@ export const loginUser = async (req, res)=>{
     try{
         const {email, password} = req.body
 
-        const exist = User.findOne(email)
-        if(!exist){
+        const user = await User.findOne({email})
+        if(!user){
             return res.send({
                 message: "User does not exist"
             })
         }
-
+        const isMatch = await bcrypt.compare(password, user.password);
+        if (!isMatch) {
+            return res.status(400).json({ error: 'Invalid credentials' });
+        }
+        const token = jwt.sign({id: user._id,role: user.role},process.env.JWT_SECRET)
+        return res.status(200).json({
+            user, token
+        })
     }catch(e){
         res.status(500).send({
             message: e.message
