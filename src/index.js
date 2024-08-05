@@ -12,6 +12,7 @@ app.use(express.json())
 app.use('/users', userRoutes)
 app.use('/classes', classRoutes)
 
+
 app.listen(8080, ()=>{
     console.log("server running on port 8080");
     connectToDatabase()
