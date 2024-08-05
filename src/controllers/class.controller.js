@@ -2,11 +2,11 @@ import { Class } from "../models/class.model.js"
 
 export const createClass = async (req, res)=>{
     try{
-        const {title, instractor, description} = req.body
+        const {title, instructor, description} = req.body
 
         const newClass = await Class.create({
             title,
-            instractor,
+            instructor,
             description
         })
         newClass.save()

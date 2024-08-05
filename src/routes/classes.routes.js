@@ -5,7 +5,7 @@ import { enrollClass } from "../controllers/enrollClass.controller.js";
 
 const router = new Router()
 
-router.post('/createClass', createClass)
+router.post('/create', createClass)
 router.post('/:classId/enroll', authMiddleware, enrollClass)
 
 export default router

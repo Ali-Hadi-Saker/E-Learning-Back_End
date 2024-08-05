@@ -10,7 +10,7 @@ const classSchema = new Schema({
         type: String,
         required: true
     },
-    instractor:{
+    instructor:{
         type: String,
         required: true,
     },
