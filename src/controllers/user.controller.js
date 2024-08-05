@@ -12,7 +12,7 @@ export const createUser = async (req, res) => {
             })
         }
         const hashedPassword = await bcrypt.hash(password, 10)
-        const user = new User.create({
+        const user = await User.create({
             name,
             email,
             password : hashedPassword
@@ -27,3 +27,41 @@ export const createUser = async (req, res) => {
         })
     }
 }
+
+export const loginUser = async (req, res)=>{
+    try{
+        const {email, password} = req.body
+
+        const exist = User.findOne(email)
+        if(!exist){
+            return res.send({
+                message: "User does not exist"
+            })
+        }
+
+    }catch(e){
+        res.status(500).send({
+            message: e.message
+        })
+    }
+}
+
+export const deleteUser = async (req, res) => {
+    try {
+      const { id } = req.params;
+  
+      const deleted = await User.findByIdAndDelete(id);
+  
+      if (!deleted) {
+        return res.status(404).send({
+          message: "User not found",
+        });
+      }
+  
+      res.send(deleted);
+    } catch (e) {
+      res.status(500).send({
+        message: "Something went wrong",
+      });
+    }
+  };
