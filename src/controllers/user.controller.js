@@ -55,21 +55,21 @@ export const loginUser = async (req, res)=>{
 }
 
 export const deleteUser = async (req, res) => {
-    try {
-      const { id } = req.params;
-  
-      const deleted = await User.findByIdAndDelete(id);
-  
-      if (!deleted) {
-        return res.status(404).send({
-          message: "User not found",
-        });
-      }
-  
-      res.send(deleted);
-    } catch (e) {
-      res.status(500).send({
-        message: "Something went wrong",
-      });
+try {
+    const { id } = req.params;
+
+    const deleted = await User.findByIdAndDelete(id);
+
+    if (!deleted) {
+    return res.status(404).send({
+        message: "User not found",
+    });
     }
-  };
+
+    res.send(deleted);
+} catch (e) {
+    res.status(500).send({
+    message: "Something went wrong",
+    });
+}
+};
