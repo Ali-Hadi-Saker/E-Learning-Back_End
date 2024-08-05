@@ -14,7 +14,13 @@ const classSchema = new Schema({
         type: String,
         required: true,
     },
-    students: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }]
+    students: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
+    files: [
+            {
+            filename: { type: String },
+            fileUrl: { type: String },
+            }
+        ]
 })
 
 export const Class = mongoose.model("Class", classSchema)
