@@ -7,7 +7,7 @@ import { adminMiddleware } from "../middleware/adminMiddleware.js";
 const router = new Router()
 
 router.post('/create',authMiddleware, adminMiddleware, createClass)
-router.post('/:classId/enroll', authMiddleware, enrollClass)
+router.get('/:classId/enroll', authMiddleware, enrollClass)
 router.get('/',authMiddleware, getAllClasses)
 router.get('/enrolled',authMiddleware, getEnrolledClasses)
 
