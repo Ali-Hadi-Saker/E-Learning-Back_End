@@ -8,6 +8,6 @@ const router = new Router()
 
 router.post('/create',authMiddleware, adminMiddleware, createClass)
 router.post('/:classId/enroll', authMiddleware, enrollClass)
-router.get('/', getAllClasses)
+router.get('/',authMiddleware, getAllClasses)
 
 export default router
