@@ -4,8 +4,10 @@ import connectToDatabase from "./database/connection.js";
 import userRoutes from "./routes/users.routes.js"
 import classRoutes from "./routes/classes.routes.js"
 import fileRoutes from "./routes/file.routes.js"
+import cors from "cors"
 
 const app = express()
+app.use(cors()); 
 
 dotenv.config()
 app.use(express.json())
