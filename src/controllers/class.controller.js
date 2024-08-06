@@ -34,3 +34,12 @@ export const deleteClass = async (req, res)=>{
         })
     }
 }
+
+export const getAllClasses = async (req, res)=>{
+    try{
+        const classes = await Class.find()
+        return res.status(200).json(classes)
+    }catch(e){
+        return res.status(500).send({message: e.message})
+    }
+}
