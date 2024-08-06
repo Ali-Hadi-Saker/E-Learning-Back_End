@@ -20,7 +20,8 @@ export const createUser = async (req, res) => {
         })
         user.save()
         res.status(200).send({
-            user
+            user,
+            message: "success"
         })
     }catch(e){
         res.status(500).send({
@@ -45,7 +46,9 @@ export const loginUser = async (req, res)=>{
         }
         const token = jwt.sign({id: user._id,role: user.role},process.env.JWT_SECRET)
         return res.status(200).json({
-            user, token
+            user, 
+            token,
+            message: "success"
         })
     }catch(e){
         res.status(500).send({
