@@ -7,7 +7,10 @@ import fileRoutes from "./routes/file.routes.js"
 import cors from "cors"
 
 const app = express()
-app.use(cors()); 
+app.use(cors({
+    origin: 'http://localhost:3000', // Replace with your frontend URL
+    credentials: true,
+})); 
 
 dotenv.config()
 app.use(express.json())
