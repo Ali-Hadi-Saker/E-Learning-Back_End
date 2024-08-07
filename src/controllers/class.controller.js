@@ -23,12 +23,12 @@ export const createClass = async (req, res)=>{
 
 export const deleteClass = async (req, res)=>{
     try{
-        const {id} = req.param
-        const deleted = Class.findByIdAndDelete(id)
+        const {id} = req.params
+        const deleted = await Class.findByIdAndDelete(id)
         if(!deleted){
             return res.json({message: 'class not found'})
         }
-        return res.send(deleted)
+        return res.json({message: 'deleted successfully'})
     }catch(e){
         return res.status(500).send({
             message: e.message

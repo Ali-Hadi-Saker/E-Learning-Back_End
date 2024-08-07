@@ -5,7 +5,7 @@ export const adminMiddleware = (req, res, next) => {
             next();
 
         } else {
-
+            console.log(req.user)
             return res.status(403).json({ message: 'Access denied: Admins only.' });
         }
     } catch (error) {
